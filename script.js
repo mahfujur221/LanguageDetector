@@ -178,3 +178,36 @@ function addToHistory(text, language, confidence) {
     
     updateHistoryDisplay();
 }
+
+// Update history display
+function updateHistoryDisplay() {
+    historyList.innerHTML = '';
+    
+    detectionHistory.forEach(item => {
+        const historyItem = document.createElement('div');
+        historyItem.className = 'history-item';
+        
+        const historyText = document.createElement('div');
+        historyText.className = 'history-text';
+        historyText.textContent = item.text;
+        
+        const historyLanguage = document.createElement('div');
+        historyLanguage.className = 'history-language';
+        historyLanguage.textContent = item.language;
+        
+        const historyConfidence = document.createElement('div');
+        historyConfidence.textContent = `${item.confidence}%`;
+        
+        historyItem.appendChild(historyText);
+        historyItem.appendChild(historyLanguage);
+        historyItem.appendChild(historyConfidence);
+        
+        historyList.appendChild(historyItem);
+    });
+}
+
+// Initialize with sample text
+window.addEventListener('DOMContentLoaded', () => {
+    inputArea.value = "Hello! This is a sample text to demonstrate the language detection feature.";
+    inputArea.dispatchEvent(new Event('input'));
+});
