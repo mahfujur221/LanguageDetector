@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Detector Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-language"></i>
+                <h1>Language Detector Tool</h1>
+            </div>
+            <p class="tagline">Advanced language detection tool that identifies over 50 languages with high accuracy</p>
+        </header>
+
+        <div class="app-container">
+            <div class="input-section">
+                <h2 class="section-title"><i class="fas fa-keyboard"></i> Input Text</h2>
+                <textarea class="input-area" placeholder="Enter or paste text here to detect its language..."></textarea>
+                
+                <div class="stats">
+                    <span id="char-count">Characters: 0</span>
+                    <span id="word-count">Words: 0</span>
+                </div>
+                
+                <div class="buttons">
+                    <button class="btn btn-primary" id="detect-btn">
+                        <i class="fas fa-search"></i> Detect Language
+                    </button>
+                    <button class="btn btn-secondary" id="clear-btn">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                </div>
+                
+                <div class="sample-texts">
+                    <div class="sample-text" data-text="Bonjour, comment allez-vous aujourd'hui?">French Sample</div>
+                    <div class="sample-text" data-text="Hola, ¿cómo estás hoy? Me gusta mucho el buen tiempo.">Spanish Sample</div>
+                    <div class="sample-text" data-text="Hello, how are you today? I really enjoy this beautiful weather.">English Sample</div>
+                    <div class="sample-text" data-text="Hallo, wie geht es dir heute? Ich genieße dieses schöne Wetter.">German Sample</div>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i> Detection Results</h2>
+                
+                <div class="detection-result">
+                    <div class="detected-language" id="detected-language">-</div>
+                    <div class="confidence" id="confidence-text">Confidence: 0%</div>
+                    <div class="confidence-bar">
+                        <div class="confidence-level" id="confidence-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <h3 class="section-title"><i class="fas fa-list"></i> Top Matches</h3>
+                <div class="language-details" id="language-details">
+                    <!-- Language cards will be inserted here -->
+                </div>
+                
+                <div class="history-section">
+                    <h3 class="section-title"><i class="fas fa-history"></i> Detection History</h3>
+                    <div id="history-list">
+                        <!-- History items will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Fast Detection</h3>
+                <p class="feature-desc">Get instant language detection results as you type with our optimized algorithm.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="feature-title">50+ Languages</h3>
+                <p class="feature-desc">Supports detection of over 50 languages including rare and regional dialects.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">High Accuracy</h3>
+                <p class="feature-desc">Advanced machine learning models ensure over 99% accuracy for most languages.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Language Detector Tool &copy; 2025 | SourceCodester</p>
+            <p>This is a demo application. For production use, consider integrating with a language detection API.</p>
+        </footer>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
