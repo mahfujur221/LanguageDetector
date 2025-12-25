@@ -159,3 +159,22 @@ function updateResults(language, confidence, results) {
         languageDetails.appendChild(langCard);
     });
 }
+
+// Add detection to history
+function addToHistory(text, language, confidence) {
+    const historyItem = {
+        text: text.length > 50 ? text.substring(0, 50) + '...' : text,
+        language,
+        confidence,
+        timestamp: new Date().toLocaleTimeString()
+    };
+    
+    detectionHistory.unshift(historyItem);
+    
+    // Keep only last 5 items
+    if (detectionHistory.length > 5) {
+        detectionHistory.pop();
+    }
+    
+    updateHistoryDisplay();
+}
