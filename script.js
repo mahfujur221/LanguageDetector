@@ -55,3 +55,79 @@ clearBtn.addEventListener('click', () => {
     languageDetails.innerHTML = '';
 });
 
+// Detect button
+detectBtn.addEventListener('click', detectLanguage);
+
+// Simulate language detection
+function detectLanguage() {
+    const text = inputArea.value.trim();
+    
+    if (!text) {
+        alert('Please enter some text to detect the language.');
+        return;
+    }
+
+    // In a real application, this would be an API call
+    // For demo purposes, we're simulating detection with simple rules
+    
+    let detectedLang = 'Unknown';
+    let confidence = 0;
+    let results = [];
+
+    // Simple detection logic for demo
+    if (text.includes(' the ') || text.includes(' and ') || text.includes(' you ')) {
+        detectedLang = 'English';
+        confidence = 92;
+        results = [
+            { language: 'English', confidence: 92 },
+            { language: 'German', confidence: 5 },
+            { language: 'Dutch', confidence: 3 }
+        ];
+    } else if (text.includes(' el ') || text.includes(' y ') || text.includes(' de ')) {
+        detectedLang = 'Spanish';
+        confidence = 95;
+        results = [
+            { language: 'Spanish', confidence: 95 },
+            { language: 'Portuguese', confidence: 4 },
+            { language: 'Italian', confidence: 1 }
+        ];
+    } else if (text.includes(' et ') || text.includes(' de ') || text.includes(' vous ')) {
+        detectedLang = 'French';
+        confidence = 89;
+        results = [
+            { language: 'French', confidence: 89 },
+            { language: 'Italian', confidence: 7 },
+            { language: 'Spanish', confidence: 4 }
+        ];
+    } else if (text.includes(' und ') || text.includes(' der ') || text.includes(' die ')) {
+        detectedLang = 'German';
+        confidence = 91;
+        results = [
+            { language: 'German', confidence: 91 },
+            { language: 'Dutch', confidence: 6 },
+            { language: 'English', confidence: 3 }
+        ];
+    } else {
+        // Fallback: pick a random language for demo
+        const randomLang = languages[Math.floor(Math.random() * languages.length)];
+        detectedLang = randomLang.name;
+        confidence = Math.floor(Math.random() * 30) + 70;
+        
+        results = [
+            { language: detectedLang, confidence: confidence },
+            { language: 'English', confidence: Math.floor(Math.random() * 20) },
+            { language: 'Spanish', confidence: Math.floor(Math.random() * 10) }
+        ];
+        
+        // Normalize results to sum to 100
+        const total = results.reduce((sum, r) => sum + r.confidence, 0);
+        results.forEach(r => r.confidence = Math.round((r.confidence / total) * 100));
+        confidence = results[0].confidence;
+    }
+
+    // Update UI with results
+    updateResults(detectedLang, confidence, results);
+    
+    // Add to history
+    addToHistory(text, detectedLang, confidence);
+}
