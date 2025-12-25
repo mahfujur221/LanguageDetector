@@ -131,3 +131,31 @@ function detectLanguage() {
     // Add to history
     addToHistory(text, detectedLang, confidence);
 }
+
+// Update results in the UI
+function updateResults(language, confidence, results) {
+    detectedLanguage.textContent = language;
+    confidenceText.textContent = `Confidence: ${confidence}%`;
+    confidenceBar.style.width = `${confidence}%`;
+    
+    // Clear previous results
+    languageDetails.innerHTML = '';
+    
+    // Add new language cards
+    results.forEach(result => {
+        const langCard = document.createElement('div');
+        langCard.className = 'language-card';
+        
+        const langName = document.createElement('div');
+        langName.className = 'language-name';
+        langName.textContent = result.language;
+        
+        const langConfidence = document.createElement('div');
+        langConfidence.className = 'language-confidence';
+        langConfidence.textContent = `${result.confidence}%`;
+        
+        langCard.appendChild(langName);
+        langCard.appendChild(langConfidence);
+        languageDetails.appendChild(langCard);
+    });
+}
