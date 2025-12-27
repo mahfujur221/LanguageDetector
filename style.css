@@ -261,7 +261,18 @@ h1 {
     color: var(--secondary);
 }
 
+.feature-desc {
+    color: var(--gray);
+    line-height: 1.5;
+}
 
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
 
 .sample-texts {
     display: flex;
